@@ -7,12 +7,10 @@ var path = require ('path');
 let app = express();
 
 
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
 
 
 app.get('/', function(req, res) {
@@ -32,15 +30,12 @@ app.get('/search', function(req, res){
 	var es = new EventSearch();
 	res.writeHead(200, {"Content-Type": "application/json"});
 
-
-	es.search(
-		{
-	    "lat": lat,
-	    "lng": lon,
-	    "distance": dist,
-	    "accessToken": "EAACEdEose0cBADm0ah2eD7q6umQkQdLEoJ8EaZALDtQfh1JgSvqpwbNZCVfcBDL8jG7tgKvlsXRapHQm2yjnbfraJUUCRKQHvI9DlNNSjnPVffzSISt5N83374yFJYMJs1n6inZCdPBo7dVuEeEFCpDzJl95k9BILTQwRnT7b0XV3fdC9PMaUZBtdITnl3QDxT7IpQncggZDZD"
-		}
-		).then(function (events) {
+	es.search({
+		    "lat": lat,
+		    "lng": lon,
+		    "distance": dist,
+		    "accessToken": "EAACEdEose0cBAB4FqruMRAmTat6Wb0D1plBBzdutHxEIynzZBPdNXyKHyCORZBY0uZARxEVZCnp381LQvHFh8egepkZACj0snWo074mqu07XJJUTIwMEkI3tAHV81YscQTj4npt8uDCsr7Ye1eD4GzlSmz3Csh9Sx7Rej18QhasVuFlRHXKEjSETdOfj4EzsZD"
+		}).then(function (events) {
 	    console.log(JSON.stringify(events));
 	     res.end(JSON.stringify(events));
 	     
