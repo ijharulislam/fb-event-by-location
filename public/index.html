@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ </head>
+
+ <body>
+ <div style="margin-top: 70px;">
+	 <label>Enter Latitude</label>
+	 <input type="text" name="" id="lat"></input>
+	 <br>
+	 <br>
+	 <label>Enter Longitude</label>
+	 <input type="text" name="" id="lon"></input>
+	 <br>
+	 <br>
+	 <label>Enter Distance</label>
+	 <input type="text" name="" id="dist"></input>
+	 <br>
+	 <br>
+	 <button id="search">Search</button>
+	 <br>
+	 <br>
+	 <label>Result</label>
+	 <pre id="result"></pre>
+ </div>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+ <script type="text/javascript">
+
+ 
+
+ $('#search').on('click', function(){
+ 	var lat = $('#lat').val();
+	var lon = $('#lon').val();
+	var dist = $('#dist').val();
+	console.log("lat lon", lat, lon, dist)
+	$.get("http://localhost:3000/search", {lat:lat, lon:lon, dist:dist}, function(data){
+		console.log(data);
+		$('#result').val(JSON.stringify(data));
+
+		document.getElementById("result").innerHTML = JSON.stringify(data,undefined, 2);
+
+	})
+ })
+
+ 	
+ </script>
+ 
+ </body>
+ </html>
