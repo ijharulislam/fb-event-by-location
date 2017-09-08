@@ -19,6 +19,10 @@
 	 <input type="text" name="" id="dist"></input>
 	 <br>
 	 <br>
+	 <label>Enter Access Token</label>
+	 <input type="text" name="" id="token"></input>
+	 <br>
+	 <br>
 	 <button id="search">Search</button>
 	 <br>
 	 <br>
@@ -36,8 +40,10 @@
  	var lat = $('#lat').val();
 	var lon = $('#lon').val();
 	var dist = $('#dist').val();
+	var token = $('#token').val();
+
 	console.log("lat lon", lat, lon, dist)
-	$.get("http://ec2-13-58-190-193.us-east-2.compute.amazonaws.com:3000/search", {lat:lat, lon:lon, dist:dist}, function(data){
+	$.get("http://ec2-13-58-190-193.us-east-2.compute.amazonaws.com:3000/search", {lat:lat, lon:lon, dist:dist, token:token}, function(data){
 		console.log(data);
 		$('#result').val(JSON.stringify(data));
 		document.getElementById("result").innerHTML = JSON.stringify(data,undefined, 2);

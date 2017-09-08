@@ -23,6 +23,8 @@ app.get('/search', function(req, res){
 	var lat = req.query.lat;
 	var lon = req.query.lon;
 	var dist = req.query.dist;
+	var token = req.query.token;
+
 	console.log(lat, lon, dist)
 
 	var EventSearch = require("facebook-events-by-location-core");
@@ -34,7 +36,7 @@ app.get('/search', function(req, res){
 		    "lat": lat,
 		    "lng": lon,
 		    "distance": dist,
-		    "accessToken": "EAACEdEose0cBAB4FqruMRAmTat6Wb0D1plBBzdutHxEIynzZBPdNXyKHyCORZBY0uZARxEVZCnp381LQvHFh8egepkZACj0snWo074mqu07XJJUTIwMEkI3tAHV81YscQTj4npt8uDCsr7Ye1eD4GzlSmz3Csh9Sx7Rej18QhasVuFlRHXKEjSETdOfj4EzsZD"
+		    "accessToken": token || "EAACEdEose0cBABljHsIxB12PcZCiO3bo9HEWuCogJbSRbpfOj2yEczVEOg3rIjLsXV7abMfUpJZBx9aFEXlIp27RRjdDHGi6EZAucZC3u11l7O57jFo13DE1sg5BIzhJXeMhSXh4WaUYP6CZC6ZAaG3Wq4TmjbOUE9r88W7rJ2diAZBkFVcr1f1eavKGRhDkcsZD"
 		}).then(function (events) {
 	    console.log(JSON.stringify(events));
 	     res.end(JSON.stringify(events));
